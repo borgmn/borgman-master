@@ -10,6 +10,10 @@
 
 import type * as author from "../author.js";
 import type * as feedback from "../feedback.js";
+import type * as global from "../global.js";
+import type * as home from "../home.js";
+import type * as post from "../post.js";
+import type * as seed from "../seed.js";
 import type * as tipus from "../tipus.js";
 
 import type {
@@ -21,6 +25,10 @@ import type {
 declare const fullApi: ApiFromModules<{
   author: typeof author;
   feedback: typeof feedback;
+  global: typeof global;
+  home: typeof home;
+  post: typeof post;
+  seed: typeof seed;
   tipus: typeof tipus;
 }>;
 

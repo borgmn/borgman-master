@@ -14,6 +14,7 @@
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
     "convex": "^1.32.0",
+    "convex-helpers": "^0.1.114",
     "next": "^14.1.4",
     "postcss": "8.4.27",
     "react": "^18.2.0",
@@ -23,7 +24,5 @@
     "sharp": "^0.32.5",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
-  },
-  "devDependencies": {
   }
 }

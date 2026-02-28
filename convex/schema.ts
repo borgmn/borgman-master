@@ -1,4 +1,4 @@
-borgman-master/convex/schema.ts
+
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 

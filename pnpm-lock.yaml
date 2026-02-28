@@ -23,6 +23,9 @@ importers:
       convex:
         specifier: ^1.32.0
         version: 1.32.0(react@18.3.1)
+      convex-helpers:
+        specifier: ^0.1.114
+        version: 0.1.114(convex@1.32.0(react@18.3.1))(react@18.3.1)(typescript@5.1.6)
       next:
         specifier: ^14.1.4
         version: 14.2.35(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -452,6 +455,28 @@ packages:
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
+
+  convex-helpers@0.1.114:
+    resolution: {integrity: sha512-elEdh+gG6BDv2dWIWVvBeJPbHnDQS5+WexUuwlGVJXz1EbMkXz/UIQwFIfLMZIXUwW6ot4JYf/1JJKNStrE6lg==}
+    hasBin: true
+    peerDependencies:
+      '@standard-schema/spec': ^1.0.0
+      convex: ^1.32.0
+      hono: ^4.0.5
+      react: ^17.0.2 || ^18.0.0 || ^19.0.0
+      typescript: ^5.5
+      zod: ^3.25.0 || ^4.0.0
+    peerDependenciesMeta:
+      '@standard-schema/spec':
+        optional: true
+      hono:
+        optional: true
+      react:
+        optional: true
+      typescript:
+        optional: true
+      zod:
+        optional: true
 
   convex@1.32.0:
     resolution: {integrity: sha512-5FlajdLpW75pdLS+/CgGH5H6yeRuA+ru50AKJEYbJpmyILUS+7fdTvsdTaQ7ZFXMv0gE8mX4S+S3AtJ94k0mfw==}
@@ -1268,6 +1293,13 @@ snapshots:
       color-string: 1.9.1
 
   commander@4.1.1: {}
+
+  convex-helpers@0.1.114(convex@1.32.0(react@18.3.1))(react@18.3.1)(typescript@5.1.6):
+    dependencies:
+      convex: 1.32.0(react@18.3.1)
+    optionalDependencies:
+      react: 18.3.1
+      typescript: 5.1.6
 
   convex@1.32.0(react@18.3.1):
     dependencies:

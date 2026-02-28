@@ -1,7 +1,8 @@
+borgman-master/src/app/api/Global/Length/[category]/route.ts
 import { NextResponse } from "next/server";
-import { prisma } from "../../../../../../prisma/prismaClient";
+import { api } from "@/convex/_generated/api";
+import { getConvexServerClient } from "convex/server";
 import { Category } from "@/utils/interfaces";
-// import { Category } from "@/utils/interfaces";
 
 export async function GET(
   request: Request,
@@ -9,23 +10,24 @@ export async function GET(
 ) {
   try {
     const category = params.category;
-    const main = await prisma.mainStory.findMany({
-      where: { Category: { Category: category } },
-      select: { id: true },
-    });
-    const side = await prisma.sideStory.findMany({
-      where: { Category: { Category: category } },
-      select: { id: true },
+    const convex = getConvexServerClient();
+
+    // Call the Convex query for stories length by category
+    const length = await convex.query(api.home.getStoriesLength, {
+      category: category ?? null,
     });
 
-    const mainStoriesLength = main.length;
-    const sideStoriesLength = side.length;
-
-    return NextResponse.json({ mainStoriesLength, sideStoriesLength });
+    return NextResponse.json(
+      { length },
+      {
+        status: 200,
+        statusText: "The resource has been fetched and transmitted to the client",
+      }
+    );
   } catch (error) {
     return NextResponse.json(
       {
-        error: error,
+        error: error instanceof Error ? error.message : error,
         errorMessage: "The server cannot find the requested resource.",
       },
       {

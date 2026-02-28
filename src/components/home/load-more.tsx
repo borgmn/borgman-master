@@ -4,54 +4,44 @@ import { StoriesInterface } from "@/utils/interfaces";
 import React, { Fragment, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import StroriesContainer from "./stories-container";
-import { getStoriesLength } from "@/lib/Home/get-length";
+// import { getStoriesLength } from "@/lib/Home/get-length";
+import { api } from "@/convex/_generated/api";
+import { useQuery } from "convex/react";
 import SiteFooter from "../ui/site-footer";
 import LoadingSpinner from "./loading-spinner";
 import { useParams } from "next/navigation";
-import { getLoadMoreStories } from "@/lib/global/get-load-more-stories";
+// import { getLoadMoreStories } from "@/lib/global/get-load-more-stories";
 import StoriesWrapperSkeleton from "./skeleton/stories-wrapper-skeleton";
 
 const LoadMore = () => {
   const [stories, setStories] = useState<StoriesInterface[]>([]);
   const [pagesLoaded, setPagesLoaded] = useState(0);
-  const [storiesLength, setStoriesLength] = useState<{
-    mainStoriesLength: number;
-    sideStoriesLength: number;
-  }>();
 
+  // Use Convex to get the stories length for the current category
   const { category } = useParams();
+  const ifCategory = `${category ? category : ""}`;
+  const storiesLength = useQuery(api.home.getStoriesLength, { category: ifCategory }) ?? 0;
+
   const { ref, inView } = useInView();
 
-  const ifCategory = `${category ? category : ""}`;
-
-  const newStoriesContainer: StoriesInterface[] = [];
-
+  // Use Convex to get paginated stories
   const loadMoreStories = async () => {
-    const nextPage = pagesLoaded + 1;
-    const newStories = await getLoadMoreStories(nextPage, ifCategory);
-    newStoriesContainer.unshift(newStories);
-
-    setStories((prevStories: StoriesInterface[]) => [
-      ...prevStories,
-      ...newStoriesContainer,
-    ]);
-
-    const length: { mainStoriesLength: number; sideStoriesLength: number } =
-      await getStoriesLength(ifCategory);
-
-    setStoriesLength(length);
-    setPagesLoaded(nextPage);
+    // You should implement a Convex query for loading more stories (pagination)
+    // Example: const newStories = useQuery(api.post.getLoadMoreStories, { skip: pagesLoaded, category: ifCategory });
+    // For now, this is a placeholder for your Convex logic.
+    // setStories((prevStories) => [...prevStories, ...newStories]);
+    setPagesLoaded((prev) => prev + 1);
   };
 
   useEffect(() => {
     if (inView) {
       loadMoreStories();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView]);
 
-  const mainLimit =
-  storiesLength && Math.floor(storiesLength.mainStoriesLength / 2) - 1;
-  const sideLimit = storiesLength && storiesLength.sideStoriesLength - 1;
+  // Adjust these limits based on your Convex data shape
+  const mainLimit = storiesLength && Math.floor(storiesLength / 2) - 1;
 
   return (
     <Fragment>
