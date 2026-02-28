@@ -1,4 +1,4 @@
-import Stereotype from "@/misc/logos/Stereotype";
+import Borgman from "@/misc/logos/borgman";
 import Link from "next/link";
 import React, { Fragment } from "react";
 
@@ -8,11 +8,11 @@ const StorySkeleton = () => {
       <div className="absolute top-0 w-full pb-[30px]">
         <Link
           href="/"
-          aria-label="home button for stereotype"
-          title="Stereotype Home"
+          aria-label="home button for borgman"
+          title="borgman"
           className="z-[100] w-fit block"
         >
-          <Stereotype className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[781.5px] md:h-[120px] lg:h-[145px] fill-white md:fill-white/50 pl-[9px]" />
+          <Borgman className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[781.5px] md:h-[120px] lg:h-[145px] fill-white md:fill-white/50 pl-[9px]" />
         </Link>
       </div>
 

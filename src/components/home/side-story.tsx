@@ -1,4 +1,4 @@
-import StereotypeStroked from "@/misc/logos/stereotype-stroked";
+import borgmanStroked from "@/misc/logos/borgman-stroked";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -143,13 +143,13 @@ const SideStory = ({ postProps }: { postProps: SideStoryThumb }) => {
           href="/"
           aria-label="Go to Home / Top of the page"
         >
-          <StereotypeStroked
+          <BorgmanStroked
             height="428"
             width="80"
             className="z-10 absolute bottom-[6px] right-[6px] hidden lg:block"
             fill={quadrple}
           />
-          <StereotypeStroked
+          <BorgmanStroked
             height="347.75"
             width="65"
             className="absolute sm:-left-[75px] sm:-top-[30px]  hidden sm:block lg:hidden"
@@ -157,7 +157,7 @@ const SideStory = ({ postProps }: { postProps: SideStoryThumb }) => {
           />
         </Link>
       </div>
-      <StereotypeStroked
+      <BorgmanStroked
         height="347.75"
         width="65"
         className="-z-[50] absolute top-[50px] left-[17px] block sm:hidden"

@@ -1,6 +1,6 @@
 import React from "react";
 
-const StereotypeInclined = ({
+const BorgmanInclined = ({
   className,
   fill,
 }: {
@@ -22,4 +22,4 @@ const StereotypeInclined = ({
   );
 };
 
-export default StereotypeInclined;
+export default BorgmanInclined;

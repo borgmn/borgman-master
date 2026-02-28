@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
-import Stereotype from "@/misc/logos/Stereotype";
+import Borgman from "@/misc/logos/borgman";
 import SiteFooter from "@/components/ui/site-footer";
 import TipUsForm from "@/components/tip-us/tip-form";
 import { Metadata, Viewport } from "next";
@@ -8,12 +8,12 @@ import { constructMetadata } from "@/lib/global/metadata-constructor";
 
 export async function generateMetadata(): Promise<Metadata> {
   const metadata = constructMetadata({
-    title: "Tip us - Stereotype",
+    title: "Tip us - borgman",
     description:
-      "Have a tip or story to share? Connect with Stereotype's tip line and contribute to our coverage of tech, reviews, entertainment, and news.",
-    imgTitle: "Stereotype Tip Line: Share Your Stories with Us!",
+      "Have a tip or story to share? Connect with borgman's tip line and contribute to our coverage of tech, reviews, entertainment, and news.",
+    imgTitle: "borgman Tip Line: Share Your Stories with Us!",
     imgDesc:
-      "Have a tip or story to share? Connect with Stereotype's tip line and contribute to our coverage of tech, reviews, entertainment, and news.",
+      "Have a tip or story to share? Connect with borgman's tip line and contribute to our coverage of tech, reviews, entertainment, and news.",
     imgUrl:
       "https://cdn.sanity.io/images/aftdl3p2/production/91dafaea31fc738aa6006b2579bd50517aed906c-1200x627.jpg",
     site: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/Tip-us`,
@@ -32,11 +32,11 @@ const TipUs = () => {
       <div className="z-40 absolute top-0 md:right-[0px] pb-[30px]">
         <Link
           href="/"
-          aria-label="home button for stereotype"
-          title="Stereotype Home"
+          aria-label="home button for borgman"
+          title="borgman Home"
           className="w-fit block"
         >
-          <Stereotype className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[700.7px] md:h-[120px] lg:h-[130px] fill-torq-100 opacity-50 md:opacity-50 pl-[9px]" />
+          <Borgman className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[700.7px] md:h-[120px] lg:h-[130px] fill-torq-100 opacity-50 md:opacity-50 pl-[9px]" />
         </Link>
       </div>
 

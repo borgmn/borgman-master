@@ -9,8 +9,8 @@ import {
 } from "../misc/fonts/fonts";
 
 export const metadata = {
-  applicationName: "Stereotype",
-  keywords: ["Stereotype", "stereotype", "blog", "tech blog"],
+  applicationName: "borgman",
+  keywords: ["borgman", "borgman", "blog", "tech blog"],
   creator: "Anirudh Bhadauria",
   publisher: "Anirudh Bhadauria",
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_DOMAIN_URL}`),
@@ -20,9 +20,9 @@ export const metadata = {
   },
   openGraph: {
     url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}`,
-    title: "Stereotype",
+    title: "borgman",
     description:
-      "Discover a world of diverse content in tech, reviews, entertainment, and news. Stereotype - Where Insights, Authenticity, and Inclusivity Meet. Explore now!",
+      "Discover a world of diverse content in tech, reviews, entertainment, and news. borgman - Where Insights, Authenticity, and Inclusivity Meet. Explore now!",
     images: [
       {
         url: "https://cdn.sanity.io/images/aftdl3p2/production/6be92cc3f60e23a4f023a03b92adeb53cd2243c1-1200x630.jpg",
@@ -30,9 +30,9 @@ export const metadata = {
     ],
   },
   twitter: {
-    title: "Don't live upto your Stereotypes.",
+    title: "Don't live upto your borgman.",
     description:
-      "Discover a world of diverse content in tech, reviews, entertainment, and news. Stereotype - Where Insights, Authenticity, and Inclusivity Meet. Explore now!",
+      "Discover a world of diverse content in tech, reviews, entertainment, and news. borgman - Where Insights, Authenticity, and Inclusivity Meet. Explore now!",
     card: "summary_large_image",
     images: [
       "https://cdn.sanity.io/images/aftdl3p2/production/6be92cc3f60e23a4f023a03b92adeb53cd2243c1-1200x630.jpg",

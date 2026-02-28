@@ -11,12 +11,12 @@ import { constructMetadata } from "@/lib/global/metadata-constructor";
 
 export async function generateMetadata(): Promise<Metadata> {
   const metadata = constructMetadata({
-    title: "Stereotype",
+    title: "borgman",
     description:
-      "Discover a world of diverse content in tech, reviews, entertainment, and news. Stereotype - Where Insights, Authenticity, and Inclusivity Meet. Explore now!",
-    imgTitle: "Don't live upto your Stereotypes.",
+      "Discover a world of diverse content in tech, reviews, entertainment, and news. borgman - Where Insights, Authenticity, and Inclusivity Meet. Explore now!",
+    imgTitle: "Don't live up to borgman.",
     imgDesc:
-      "Discover a world of diverse content in tech, reviews, entertainment, and news. Stereotype - Where Insights, Authenticity, and Inclusivity Meet. Explore now!",
+      "Discover a world of diverse content in tech, reviews, entertainment, and news. borgman - Where Insights, Authenticity, and Inclusivity Meet. Explore now!",
     imgUrl:
       "https://cdn.sanity.io/images/aftdl3p2/production/6be92cc3f60e23a4f023a03b92adeb53cd2243c1-1200x630.jpg",
     site: `${process.env.NEXT_PUBLIC_DOMAIN_URL}`,
@@ -40,7 +40,7 @@ const Home = () => {
         </div>
         <div className="h-full w-full lg:max-h-full lg:w-[380px] lg:pt-[174px]">
           <h2
-            className="mx-auto max-w-[500px] pb-[20px] font-poly text-[15.75px] leading-[1.2] tracking-[0.005em] 
+            className="mx-auto max-w-[500px] pb-[20px] font-poly text-[15.75px] leading-[1.2] tracking-[0.005em]
           text-torq-100 md:pl-[60px] lg:pl-[40px]"
           >
             Top Stories

@@ -22,7 +22,7 @@ export const headerNavbar = [
   // {
   //   text: "About",
   //   link: "/About",
-  //   aria: "About Stereotype",
+  //   aria: "About borgman",
   // },
 ];
 
@@ -34,8 +34,8 @@ export const footerNavbar = [
   },
   {
     text: "see our codebase",
-    link: "https://github.com/AnirudhSinghBhadauria/stereotype",
-    aria: "Codebase of Stereotype",
+    link: "https://github.com/haikelareff/borgman",
+    aria: "Codebase of borgman",
   },
   {
     text: "ethics Statment",
@@ -44,22 +44,22 @@ export const footerNavbar = [
   },
   {
     text: "developer",
-    link: "https://www.linkedin.com/in/anirudhsinghbhadauria/",
+    link: "https://www.linkedin.com/in/haikelareff/",
     aria: "See the linkedin profile of the developer",
   },
   {
     text: "Star on github",
-    link: "https://github.com/AnirudhSinghBhadauria/stereotype",
-    aria: "give the repo of Stereotype a Start on github.",
+    link: "https://github.com/haikelareff/borgman",
+    aria: "give the repo of borgman a Start on github.",
   },
   {
     text: "fork",
-    link: "https://github.com/AnirudhSinghBhadauria/stereotype",
-    aria: "fork repo of stereotype on github",
+    link: "https://github.com/haikelareff/borgman",
+    aria: "fork repo of borgman on github",
   },
   {
     text: "report a problem",
-    link: "https://github.com/AnirudhSinghBhadauria/stereotype/issues",
+    link: "https://github.com/haikelareff/borgman/issues",
     aria: "report any problem",
   },
   {

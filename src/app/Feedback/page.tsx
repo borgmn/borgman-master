@@ -1,19 +1,19 @@
 import FeedbackForm from "@/components/feedback/feedback-form";
 import SiteFooter from "@/components/ui/site-footer";
 import { constructMetadata } from "@/lib/global/metadata-constructor";
-import Stereotype from "@/misc/logos/Stereotype";
+import Borgman from "@/misc/logos/borgman";
 import { Metadata, Viewport } from "next";
 import Link from "next/link";
 import React, { Fragment } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   const metadata = constructMetadata({
-    title: "Feedback - Stereotype",
+    title: "Feedback - borgman",
     description:
-      "Share your valuable feedback with Stereotype. Help us enhance your content experience in tech, reviews, entertainment, and news.",
+      "Share your valuable feedback with borgman. Help us enhance your content experience in tech, reviews, entertainment, and news.",
     imgTitle: "Give us your Feedback: Your Voice Matters!",
     imgDesc:
-      "Share your valuable feedback with Stereotype. Help us enhance your content experience in tech, reviews, entertainment, and news.",
+      "Share your valuable feedback with borgman. Help us enhance your content experience in tech, reviews, entertainment, and news.",
     imgUrl:
       "https://cdn.sanity.io/images/aftdl3p2/production/7bd46d28b822c6ea8178324c7c21ba556a9afccf-1200x630.jpg",
     site: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/Feedback`,
@@ -32,11 +32,11 @@ const Feedback = () => {
       <div className="z-40 absolute top-0 md:right-[0px] pb-[30px]">
         <Link
           href="/"
-          aria-label="home button for stereotype"
-          title="Stereotype Home"
+          aria-label="home button for borgman"
+          title="borgman Home"
           className="w-fit block"
         >
-          <Stereotype className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[700.7px] md:h-[120px] lg:h-[130px] fill-torq-100 opacity-50 md:opacity-50 pl-[9px]" />
+          <borgman className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[700.7px] md:h-[120px] lg:h-[130px] fill-torq-100 opacity-50 md:opacity-50 pl-[9px]" />
         </Link>
       </div>
 

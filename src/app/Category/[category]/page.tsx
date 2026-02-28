@@ -40,10 +40,10 @@ export async function generateMetadata(
   }
 
   const metadata = constructMetadata({
-    title: `${params.category} - Stereotype`,
-    description: `Discover captivating and engaging ${params.category} stories beyond the stereotypes.`,
-    imgTitle: `Get ${params.category} updates from Stereotype.`,
-    imgDesc: `Discover captivating and engaging ${params.category} stories beyond the stereotypes.`,
+    title: `${params.category} - borgman`,
+    description: `Discover captivating and engaging ${params.category} stories beyond the borgman.`,
+    imgTitle: `Get ${params.category} updates from borgman.`,
+    imgDesc: `Discover captivating and engaging ${params.category} stories beyond the borgman.`,
     imgUrl: imgUrl,
     site: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/Category/${params.category}`,
   });

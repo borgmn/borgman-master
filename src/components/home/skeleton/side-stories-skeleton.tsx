@@ -1,4 +1,4 @@
-import StereotypeStroked from "@/misc/logos/stereotype-stroked";
+import BorgmanStroked from "@/misc/logos/borgman-stroked";
 import React from "react";
 
 const SideStoriesSkeleton = () => {
@@ -72,19 +72,19 @@ const SideStoriesSkeleton = () => {
         <p className="z-20 absolute lg:bottom-0 right-[20px] pb-[20px] font-poly font-semibold tracking-[0.15em] uppercase text-black text-[10px]"></p>
         {/* Reads */}
 
-        <StereotypeStroked
+        <BorgmanStroked
           height="428"
           width="80"
           className="z-10 absolute bottom-[6px] right-[6px] hidden lg:block skeleton-black-fill-loading"
         />
-        <StereotypeStroked
+        <BorgmanStroked
           height="347.75"
           width="65"
           className="absolute sm:-left-[75px] sm:-top-[30px]  hidden sm:block lg:hidden skeleton-black-fill-loading"
           // fill={"#fff"}
         />
       </div>
-      <StereotypeStroked
+      <BorgmanStroked
         height="347.75"
         width="65"
         className="-z-[50] absolute top-[50px] left-[17px] block sm:hidden skeleton-black-fill-loading"

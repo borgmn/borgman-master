@@ -1,6 +1,6 @@
 import React from "react";
 
-const Stereotype = ({
+const Borgman = ({
   fill,
   className,
 }: {
@@ -21,4 +21,4 @@ const Stereotype = ({
   );
 };
 
-export default Stereotype;
+export default Borgman;

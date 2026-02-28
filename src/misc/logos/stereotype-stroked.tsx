@@ -1,6 +1,6 @@
 import React from "react";
 
-const StereotypeStroked = ({
+const BorgmanStroked = ({
   className,
   width,
   height,
@@ -32,4 +32,4 @@ const StereotypeStroked = ({
   );
 };
 
-export default StereotypeStroked;
+export default BorgmanStroked;

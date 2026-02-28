@@ -1,6 +1,6 @@
 "use client";
 
-import Stereotype from "@/misc/logos/Stereotype";
+import Borgman from "@/misc/logos/borgman";
 import React, { Fragment, useState } from "react";
 import Link from "next/link";
 import { headerNavbar } from "@/utils/navbar";
@@ -58,10 +58,10 @@ const SiteHeader = () => {
             >
               <Link
                 href="/"
-                aria-label="HomeStereotype"
+                aria-label="borgman"
                 className="flex flex-row items-center"
               >
-                <Stereotype
+                <Borgman
                   fill={config.color}
                   className="w-[107.8px] h-[20px] hover:opacity-60 hover:transition-all hover:ease-in-out"
                 />

@@ -1,5 +1,5 @@
 import { Fragment, Suspense } from "react";
-import Stereotype from "@/misc/logos/Stereotype";
+import Borgman from "@/misc/logos/borgman";
 import Link from "next/link";
 import AuthorIntro from "@/components/author/author-intro";
 import AuthorIntroSkeleton from "@/components/author/skeleton/author-intro-skeleton";
@@ -29,14 +29,14 @@ export async function generateMetadata(
   const { Name, Designation }: AuthorProfileInterface = author.AuthorProfile;
 
   const metadata = constructMetadata({
-    title: `${Name} - Author's Stereotype`,
-    description: `Meet ${Name}, ${Designation}, one of our talented author behind Stereotype. Explore ${
+    title: `${Name} - Author's borgman`,
+    description: `Meet ${Name}, ${Designation}, one of our talented author behind borgman. Explore ${
       Name.split(" ")[0]
-    }'s diverse perspectives and contributions to Stereotype.`,
-    imgTitle: `Meet ${Name}, ${Designation}, one of our talented author behind Stereotype.`,
+    }'s diverse perspectives and contributions to borgman.`,
+    imgTitle: `Meet ${Name}, ${Designation}, one of our talented author behind borgman.`,
     imgDesc: `Explore ${
       Name.split(" ")[0]
-    }'s diverse perspectives and contributions to Stereotype.`,
+    }'s diverse perspectives and contributions to borgman.`,
     imgUrl:
       "https://cdn.sanity.io/images/aftdl3p2/production/87387d5bdc7235f33c05a4e5e4ec60602248a6bb-1200x630.jpg",
     site: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/Author/${Name.split(" ").join(
@@ -59,10 +59,10 @@ const Author = async ({ params }: { params: { author: string } }) => {
         <div className="absolute top-0 bg-purple-100 w-full pb-[30px]">
           <Link
             href="/"
-            aria-label="home button for stereotype"
-            title="Stereotype Home"
+            aria-label="home button for borgman"
+            title="borgman Home"
           >
-            <Stereotype className="fill-purple-400 z-40 pl-[9px] h-[50px] w-[270px] md:w-[645.6px] lg:w-[781.5px] md:h-[120px] lg:h-[145px]" />
+            <Borgman className="fill-purple-400 z-40 pl-[9px] h-[50px] w-[270px] md:w-[645.6px] lg:w-[781.5px] md:h-[120px] lg:h-[145px]" />
           </Link>
         </div>
 

@@ -1,5 +1,5 @@
 import LinkTree from "@/misc/logos/author/link-tree";
-import Stereotype from "@/misc/logos/Stereotype";
+import Borgman from "@/misc/logos/borgman";
 import In from "@/misc/logos/author/linkedin";
 import Tree from "@/misc/logos/author/link";
 import X from "@/misc/logos/author/twitter";
@@ -39,11 +39,11 @@ const StoryHeroSection = async ({
       <div className="absolute top-0 w-full pb-[30px]">
         <Link
           href="/"
-          aria-label="home button for stereotype"
-          title="Stereotype Home"
+          aria-label="home button for borgman"
+          title="borgman Home"
           className="z-[100] w-fit block"
         >
-          <Stereotype className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[781.5px] md:h-[120px] lg:h-[145px] fill-white md:fill-white/50 pl-[9px]" />
+          <Borgman className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[781.5px] md:h-[120px] lg:h-[145px] fill-white md:fill-white/50 pl-[9px]" />
         </Link>
       </div>
 

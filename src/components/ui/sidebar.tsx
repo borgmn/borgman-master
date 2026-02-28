@@ -1,8 +1,8 @@
 "use client";
 
 import { deskNav, mobileNav } from "@/utils/sidebar-links";
-import Stereotype from "@/misc/logos/Stereotype";
-import StereotypeStroked from "@/misc/logos/stereotype-stroked";
+import Borgman from "@/misc/logos/borgman";
+import BorgmanStroked from "@/misc/logos/borgman-stroked";
 import Link from "next/link";
 import React, { ReactPortal, useEffect, useState, Fragment } from "react";
 import { createPortal } from "react-dom";
@@ -22,7 +22,7 @@ const Modal = ({
       className="w-[340px] h-screen bg-purple-100 fixed top-0 right-0 transition-all duration-300 ease-in-out py-[24px] pl-[16px] pr-[12px] font-poly"
     >
       <div className="w-full h-full relative">
-        <StereotypeStroked
+        <BorgmanStroked
           height="588.5"
           width="110"
           className="-z-10 opacity-20 absolute bottom-0 -right-[10px]"
@@ -30,7 +30,7 @@ const Modal = ({
         />
 
         <div className="flex flex-row items-center justify-between mb-[16px]">
-          <Stereotype
+          <Borgman
             fill="white"
             className="w-[161.3px] h-[30px] sm:hover:opacity-60 hover:transition-all hover:ease-in-out"
           />

@@ -2,14 +2,14 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import AuthorReadsDate from "../ui/author-date-reads";
-import StereotypeInclined from "@/misc/logos/StereotypeInclined";
+import BorgmanInclined from "@/misc/logos/borgman-inclined";
 import { HeadlineInterface } from "@/utils/interfaces";
 import { getHeadlineForCategory, getHeadlines } from "@/lib/Home/get-headline";
 import { getColors } from "@/lib/global/get-colors";
 import { getDateTimeZone } from "@/lib/global/convert-date";
 import { Category } from "@/utils/interfaces";
 // import { Category } from "@/utils/interfaces";
-import Stereotype from "@/misc/logos/Stereotype";
+import Borgman from "@/misc/logos/borgman";
 
 const Headliner = async ({ StoryCategory }: { StoryCategory?: Category }) => {
   let headline: HeadlineInterface | null = !StoryCategory
@@ -74,11 +74,11 @@ const Headliner = async ({ StoryCategory }: { StoryCategory?: Category }) => {
           ifReads={true}
         />
       </div>
-      <StereotypeInclined
+      <BorgmanInclined
         fill="#fff"
         className="hidden md:block absolute h-[481.5px] w-[90px] lg:h-[588.5px] lg:w-[110px] top-[165px] -left-[45px] lg:top-[140px] lg:-left-[40px] z-10 title-shadow"
       />
-      <Stereotype
+      <Borgman
         fill="white"
         className="absolute h-[50px] w-[269.5px] top-[55px] left-[10px] title-shadow md:hidden"
       />

@@ -36,10 +36,10 @@ export async function generateMetadata({
     await getSinglePost(params.slug);
 
   const metadata = constructMetadata({
-    title: `${Title} - Stereotype`,
+    title: `${Title} - borgman`,
     description: Description,
     imgTitle: Title,
-    imgDesc: "Delve into the comprehensive narrative on Stereotype.",
+    imgDesc: "Delve into the comprehensive narrative on borgman.",
     imgUrl: Image,
     site: `${process.env.NEXT_PUBLIC_DOMAIN_URL}/Story/${params.slug[0]}/${params.slug[1]}/${params.slug[2]}/${params.slug[3]}`,
     authorData: [{ name: Author.Name, url: Author.Linkedin }],
