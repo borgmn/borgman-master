@@ -1,15 +1,15 @@
 "use client";
 
-import { StoriesInterface } from "@/utils/interfaces";
-import React, { Fragment, useState, useEffect } from "react";
+
+import { Fragment, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import StroriesContainer from "./stories-container";
 // import { getStoriesLength } from "@/lib/Home/get-length";
-import { api } from "@/convex/_generated/api";
+
 import { useQuery } from "convex/react";
+import { useParams } from "next/navigation";
 import SiteFooter from "../ui/site-footer";
 import LoadingSpinner from "./loading-spinner";
-import { useParams } from "next/navigation";
 // import { getLoadMoreStories } from "@/lib/global/get-load-more-stories";
 import StoriesWrapperSkeleton from "./skeleton/stories-wrapper-skeleton";
 
@@ -20,7 +20,7 @@ const LoadMore = () => {
   // Use Convex to get the stories length for the current category
   const { category } = useParams();
   const ifCategory = `${category ? category : ""}`;
-  const storiesLength = useQuery(api.home.getStoriesLength, { category: ifCategory }) ?? 0;
+  const storiesLength = useQuery(home.getStoriesLength, { category: ifCategory }) ?? 0;
 
   const { ref, inView } = useInView();
 

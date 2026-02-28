@@ -3,11 +3,9 @@ import React from "react";
 import Link from "next/link";
 import AuthorReadsDate from "../ui/author-date-reads";
 import BorgmanInclined from "@/misc/logos/borgman-inclined";
-import { HeadlineInterface } from "@/utils/interfaces";
-import { getHeadlineForCategory, getHeadlines } from "@/lib/Home/get-headline";
-import { getColors } from "@/lib/global/get-colors";
-import { getDateTimeZone } from "@/lib/global/convert-date";
-import { Category } from "@/utils/interfaces";
+
+
+
 // import { Category } from "@/utils/interfaces";
 import Borgman from "@/misc/logos/borgman";
 

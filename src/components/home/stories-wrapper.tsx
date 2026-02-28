@@ -1,6 +1,6 @@
 import React from "react";
 import StroriesContainer from "./stories-container";
-import { getStories, getStoriesForCategory } from "@/lib/Home/get-stories";
+
 import { StoriesInterface } from "@/utils/interfaces";
 import LoadMore from "./load-more";
 import { Category } from "@/utils/interfaces";
