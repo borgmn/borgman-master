@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+
+    "context7": {
+      "httpUrl": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "ctx7sk-efde9202-6f6b-4501-98d6-a5081f33a3f6",
+        "Accept": "application/json, text/event-stream"
+      }
+    },
+    "convex-mcp": {
+      "type": "stdio",
+      "command": "pnpm dlx",
+      "args": ["-y", "convex@latest", "mcp", "start"]
+    }
+  }
+}
