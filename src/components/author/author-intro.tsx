@@ -5,13 +5,15 @@ import X from "@/misc/logos/author/twitter";
 import Mail from "@/misc/logos/author/email";
 import In from "@/misc/logos/author/linkedin";
 import { AuthorProfileInterface } from "@/utils/interfaces";
-import { getAuthorProfile } from "@/lib/author/get-author-profiles";
+import { getAuthorProfile } from "@/lib/author";
 import LinkTree from "@/misc/logos/author/link-tree";
 
 const AuthorIntro = async ({ author }: { author: string }) => {
-  const AuthorData = await getAuthorProfile(author);
+  const Author = await getAuthorProfile(author);
 
-  const Author: AuthorProfileInterface = AuthorData.AuthorProfile;
+  if (!Author) {
+    return null;
+  }
 
   const {
     Name,

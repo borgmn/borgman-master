@@ -1,10 +1,7 @@
-import { getMoreStories } from "@/lib/Post/get-more-stories";
-import { getSinglePost } from "@/lib/Post/get-single-post";
-import { getColors } from "@/lib/global/get-colors";
-import { MoreStoriesInterface, SinglePostInterface } from "@/utils/interfaces";
+import { getMoreStories, getSinglePost } from "@/lib/post";
+import { getColors } from "@/utils/get-colors";
 import Image from "next/image";
 import Link from "next/link";
-import { resolve } from "path";
 import React from "react";
 
 const MoreFromSection = async ({
@@ -15,10 +12,14 @@ const MoreFromSection = async ({
   category: string;
 }) => {
   let index: number = -1;
-  const postData: SinglePostInterface = await getSinglePost(params);
-  const moreStories: MoreStoriesInterface[] = await getMoreStories(category);
+  const postData = await getSinglePost(params[0], params[1], params[2]);
+  const moreStories = await getMoreStories(category);
 
-  const { Author } = postData;
+  if (!postData) {
+    return null;
+  }
+
+  const { AuthorName, AuthorSlug } = postData;
 
   return (
     <div className="bg-torq-100 flex flex-row justify-center items-center px-[20px] pb-[16px] pt-[30px] lg:pb-[36px] lg:pt-[50px]">
@@ -38,10 +39,10 @@ const MoreFromSection = async ({
 
         <section className="w-full">
           <ul>
-            {moreStories.map((post) => {
+            {moreStories.map((post: any) => {
               index++;
 
-              let connect = `${
+              const connect = `${
                 process.env.NEXT_PUBLIC_DOMAIN_URL
               }/Story/${category}/${index <= 1 ? "Main" : "Side"}/${
                 post.Slug
@@ -56,8 +57,8 @@ const MoreFromSection = async ({
                         aria-label={`Link to the post tagged : ${post.Tag}`}
                       >
                         <Image
-                          src={post.Image}
-                          alt={post.ImageDescription}
+                          src={post.ThumbImage}
+                          alt={post.ThumbImageDescription}
                           width={640}
                           height={640}
                           className="object-cover object-center"
@@ -71,7 +72,7 @@ const MoreFromSection = async ({
                         href={connect}
                         aria-label={`Link to the post tagged : ${post.Tag}`}
                       >
-                        {post.Title}
+                        {post.ThumbTitle}
                       </Link>
                     </h3>
                   </div>
@@ -84,11 +85,11 @@ const MoreFromSection = async ({
             from{" "}
             <span>
               <Link
-                href={`/Author/${Author.Slug}`}
-                aria-label={`Link to the Profile Page of Author : ${Author.Name}`}
+                href={`/Author/${AuthorSlug}`}
+                aria-label={`Link to the Profile Page of Author : ${AuthorName}`}
                 className="font-semibold hover:underline underline-offset-[2.5px] hover:text-purple-100"
               >
-                {Author.Name}
+                {AuthorName}
               </Link>
             </span>
           </p>

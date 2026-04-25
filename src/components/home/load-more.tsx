@@ -1,65 +1,77 @@
 "use client";
 
-
 import { Fragment, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import StroriesContainer from "./stories-container";
-// import { getStoriesLength } from "@/lib/Home/get-length";
-
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 import { useParams } from "next/navigation";
 import SiteFooter from "../ui/site-footer";
 import LoadingSpinner from "./loading-spinner";
-// import { getLoadMoreStories } from "@/lib/global/get-load-more-stories";
-import StoriesWrapperSkeleton from "./skeleton/stories-wrapper-skeleton";
+import { StoriesInterface } from "@/utils/interfaces";
 
 const LoadMore = () => {
   const [stories, setStories] = useState<StoriesInterface[]>([]);
-  const [pagesLoaded, setPagesLoaded] = useState(0);
+  const [pagesLoaded, setPagesLoaded] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Use Convex to get the stories length for the current category
   const { category } = useParams();
-  const ifCategory = `${category ? category : ""}`;
-  const storiesLength = useQuery(home.getStoriesLength, { category: ifCategory }) ?? 0;
+  const categoryString = typeof category === "string" ? category : "";
+  const storiesLength = useQuery(api.home.getStoriesLength, { category: categoryString }) ?? 0;
 
   const { ref, inView } = useInView();
 
-  // Use Convex to get paginated stories
-  const loadMoreStories = async () => {
-    // You should implement a Convex query for loading more stories (pagination)
-    // Example: const newStories = useQuery(api.post.getLoadMoreStories, { skip: pagesLoaded, category: ifCategory });
-    // For now, this is a placeholder for your Convex logic.
-    // setStories((prevStories) => [...prevStories, ...newStories]);
-    setPagesLoaded((prev) => prev + 1);
-  };
+  // Calculate limits
+  const mainLimit = storiesLength ? Math.floor(storiesLength / 2) - 1 : 0;
+  const sideLimit = storiesLength ? Math.floor(storiesLength / 3) : 0;
 
   useEffect(() => {
+    const loadMoreStories = async () => {
+      if (isLoading || pagesLoaded >= mainLimit) return;
+      
+      setIsLoading(true);
+      try {
+        // Fetch using the Convex API directly
+        const response = await fetch(`/api/stories?skip=${pagesLoaded}&category=${categoryString}`);
+        if (response.ok) {
+          const newStories = await response.json();
+          if (newStories) {
+            setStories((prevStories) => [...prevStories, newStories]);
+            setPagesLoaded((prev) => prev + 1);
+          }
+        }
+      } catch (error) {
+        console.error("Error loading more stories:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     if (inView) {
       loadMoreStories();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView]);
+  }, [inView, pagesLoaded, mainLimit, categoryString, isLoading]);
 
-  // Adjust these limits based on your Convex data shape
-  const mainLimit = storiesLength && Math.floor(storiesLength / 2) - 1;
+  const hasMoreStories = pagesLoaded < mainLimit && pagesLoaded < sideLimit;
 
   return (
     <Fragment>
-      {stories.map(({ mainThumb, sideThumb, feedThumb }) => (
+      {stories.map(({ mainThumb, sideThumb, feedThumb }, index) => (
         <StroriesContainer
-          key={mainThumb[0].Slug}
+          key={mainThumb[0]?.Slug || `story-${index}`}
           mainThumb={mainThumb}
           sideThumb={sideThumb}
           feedThumb={feedThumb!}
         />
       ))}
 
-      {pagesLoaded !== mainLimit && pagesLoaded !== sideLimit ? (
+      {hasMoreStories ? (
         <div
           ref={ref}
           className="primary-container flex flex-row justify-center items-center h-[10rem]"
         >
-          <LoadingSpinner />
+          {isLoading && <LoadingSpinner />}
         </div>
       ) : (
         <SiteFooter />

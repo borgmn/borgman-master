@@ -1,16 +1,15 @@
 import React from "react";
 import StroriesContainer from "./stories-container";
-
-import { StoriesInterface } from "@/utils/interfaces";
+import { StoriesInterface, Category } from "@/utils/interfaces";
 import LoadMore from "./load-more";
-import { Category } from "@/utils/interfaces";
+import { getStories, getStoriesForCategory } from "@/lib/home";
 
 const StoriesWrapper = async ({
   StoryCategory,
 }: {
   StoryCategory?: Category | null;
 }) => {
-  let storyData: StoriesInterface[] = [];
+  const storyData: StoriesInterface[] = [];
 
   const stories: StoriesInterface = !StoryCategory
     ? await getStories(0)
@@ -22,7 +21,7 @@ const StoriesWrapper = async ({
     <ul className="flex flex-col primary-container w-full">
       {storyData.map(({ mainThumb, sideThumb, feedThumb }) => (
         <StroriesContainer
-          key={mainThumb[0].Slug}
+          key={mainThumb[0]?.Slug || "initial"}
           mainThumb={mainThumb}
           sideThumb={sideThumb}
           feedThumb={feedThumb!}
@@ -34,5 +33,3 @@ const StoriesWrapper = async ({
 };
 
 export default StoriesWrapper;
-
-// const storyData = [{ main: mainStories, side: getSideStories, status: getFeedStatus }];

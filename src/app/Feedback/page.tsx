@@ -1,6 +1,6 @@
 import FeedbackForm from "@/components/feedback/feedback-form";
 import SiteFooter from "@/components/ui/site-footer";
-import { constructMetadata } from "@/lib/global/metadata-constructor";
+import { constructMetadata } from "@/lib/global";
 import Borgman from "@/misc/logos/borgman";
 import { Metadata, Viewport } from "next";
 import Link from "next/link";
@@ -36,7 +36,7 @@ const Feedback = () => {
           title="borgman Home"
           className="w-fit block"
         >
-          <borgman className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[700.7px] md:h-[120px] lg:h-[130px] fill-torq-100 opacity-50 md:opacity-50 pl-[9px]" />
+          <Borgman className="h-[50px] w-[270px] md:w-[645.6px] lg:w-[700.7px] md:h-[120px] lg:h-[130px] fill-torq-100 opacity-50 md:opacity-50 pl-[9px]" />
         </Link>
       </div>
 

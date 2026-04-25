@@ -7,6 +7,7 @@ import {
   sansFont,
   polyFont,
 } from "../misc/fonts/fonts";
+import { ConvexClientProvider } from "@/components/convex-context/ConvexProvider";
 
 export const metadata = {
   applicationName: "borgman",
@@ -55,12 +56,14 @@ export default function RootLayout({
       <body
         className={`${titleFont.variable} ${generalFont.variable} ${sansFont.variable} ${polyFont.variable} relative overflow-x-hidden`}
       >
-        <SiteHeader />
-        <aside
-          className="fixed w-full h-screen"
-          id="sidebar-portal-root"
-        ></aside>
-        <main>{children}</main>
+        <ConvexClientProvider>
+          <SiteHeader />
+          <aside
+            className="fixed w-full h-screen"
+            id="sidebar-portal-root"
+          ></aside>
+          <main>{children}</main>
+        </ConvexClientProvider>
       </body>
     </html>
   );

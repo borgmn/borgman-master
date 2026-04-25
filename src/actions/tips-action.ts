@@ -1,6 +1,6 @@
 "use server";
 
-import { api } from "@/convex/_generated/api";
+import { api } from "../../convex/_generated/api";
 import { ConvexHttpClient } from "convex/browser";
 
 export const tipusSumbit = async (formData: FormData) => {
@@ -10,10 +10,13 @@ export const tipusSumbit = async (formData: FormData) => {
   const summarize = formData.get("summarize")?.toString() ?? "";
 
   try {
-    const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL || "http://localhost:3210";
+    const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
+    if (!convexUrl) {
+      throw new Error("NEXT_PUBLIC_CONVEX_URL is not set");
+    }
     const client = new ConvexHttpClient(convexUrl);
 
-    await client.mutation(api.tipus.submitTipus, {
+    await client.mutation(api.tips.submitTipus, {
       name,
       email,
       explain,
@@ -25,6 +28,7 @@ export const tipusSumbit = async (formData: FormData) => {
       error: false,
     };
   } catch (error) {
+    console.error("Error submitting tip:", error);
     return {
       status: false,
       error: true,

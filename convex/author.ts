@@ -1,4 +1,4 @@
-import { query } from "./_generated/server";
+import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
 
 /**
@@ -50,7 +50,7 @@ export const getAuthorStories = query({
   args: { slug: v.string() },
   handler: async (ctx, args) => {
     // Assuming mainStory, headlinerStory, and sideStory all have Author.Slug
-    const tables = ["mainStory", "headlinerStory", "sideStory"];
+    const tables = ["mainStory", "headlinerStory", "sideStory"] as const;
     let stories: any[] = [];
     for (const table of tables) {
       const found = await ctx.db
@@ -60,5 +60,100 @@ export const getAuthorStories = query({
       stories = stories.concat(found);
     }
     return stories;
+  },
+});
+
+/**
+ * Create a new author.
+ */
+export const createAuthor = mutation({
+  args: {
+    Slug: v.string(),
+    Name: v.string(),
+    DescriptionOne: v.string(),
+    DescriptionTwo: v.string(),
+    Email: v.string(),
+    Linkedin: v.string(),
+    Linktree: v.string(),
+    Instagram: v.string(),
+    Twitter: v.string(),
+    Designation: v.string(),
+    ProfilePicture: v.string(),
+  },
+  handler: async (ctx, args) => {
+    // Check if slug already exists
+    const existing = await ctx.db
+      .query("author")
+      .withIndex("by_slug", (q) => q.eq("Slug", args.Slug))
+      .first();
+
+    if (existing) {
+      throw new Error("Author with this slug already exists");
+    }
+
+    const id = await ctx.db.insert("author", {
+      ...args,
+      JoinedAt: Date.now(),
+    });
+
+    return { id };
+  },
+});
+
+/**
+ * Update an existing author.
+ */
+export const updateAuthor = mutation({
+  args: {
+    id: v.id("author"),
+    Slug: v.string(),
+    Name: v.string(),
+    DescriptionOne: v.string(),
+    DescriptionTwo: v.string(),
+    Email: v.string(),
+    Linkedin: v.string(),
+    Linktree: v.string(),
+    Instagram: v.string(),
+    Twitter: v.string(),
+    Designation: v.string(),
+    ProfilePicture: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const { id, ...updates } = args;
+
+    // Check if new slug conflicts with another author
+    const existing = await ctx.db
+      .query("author")
+      .withIndex("by_slug", (q) => q.eq("Slug", args.Slug))
+      .first();
+
+    if (existing && existing._id !== id) {
+      throw new Error("Another author with this slug already exists");
+    }
+
+    await ctx.db.patch(id, updates);
+    return { success: true };
+  },
+});
+
+/**
+ * Delete an author.
+ */
+export const deleteAuthor = mutation({
+  args: { id: v.id("author") },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.id);
+    return { success: true };
+  },
+});
+
+/**
+ * Get author by ID for editing.
+ */
+export const getAuthorById = query({
+  args: { id: v.id("author") },
+  handler: async (ctx, args) => {
+    const author = await ctx.db.get(args.id);
+    return author;
   },
 });

@@ -11,13 +11,24 @@ export const updateReads = mutation({
 		slug: v.string(),
 	},
 	handler: async (ctx, args) => {
-		// Assuming a "posts" table with unique (category, format, slug)
+		// Determine which table to query based on format
+		const tableMap = {
+			headliner: "headlinerStory",
+			main: "mainStory",
+			side: "sideStory",
+		} as const;
+
+		const tableName = tableMap[args.format as keyof typeof tableMap];
+		if (!tableName) {
+			throw new Error("Invalid format");
+		}
+
 		const [post] = await ctx.db
-			.query("posts")
+			.query(tableName)
 			.withIndex("by_category_format_slug", (q) =>
 				q
 					.eq("Category", args.category)
-					.eq("Format", args.format)
+					.eq("format", args.format)
 					.eq("Slug", args.slug),
 			)
 			.collect();

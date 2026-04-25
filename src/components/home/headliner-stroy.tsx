@@ -3,15 +3,20 @@ import React from "react";
 import Link from "next/link";
 import AuthorReadsDate from "../ui/author-date-reads";
 import BorgmanInclined from "@/misc/logos/borgman-inclined";
-
-
-// import { Category } from "@/utils/interfaces";
 import Borgman from "@/misc/logos/borgman";
+import { getHeadlines, getHeadlineForCategory } from "@/lib/home";
+import { getColors } from "@/utils/get-colors";
+import { convertDate } from "@/lib/global";
+import { Category, HeadlineInterface } from "@/utils/interfaces";
 
 const Headliner = async ({ StoryCategory }: { StoryCategory?: Category }) => {
-  let headline: HeadlineInterface | null = !StoryCategory
+  const headline: HeadlineInterface | null = !StoryCategory
     ? await getHeadlines()
     : await getHeadlineForCategory(StoryCategory);
+
+  if (!headline) {
+    return null;
+  }
 
   const {
     Author,
@@ -23,9 +28,9 @@ const Headliner = async ({ StoryCategory }: { StoryCategory?: Category }) => {
     ThumbTitle,
     CreatedAt,
     Tag,
-    Category,
+    Category: PostCategory,
     BackgroundColor,
-  } = headline!;
+  } = headline;
 
   const color = getColors(BackgroundColor).colorSlug;
 
@@ -33,8 +38,8 @@ const Headliner = async ({ StoryCategory }: { StoryCategory?: Category }) => {
     <div className="group mb-[20px] pt-[28px] md:mb-[50px] lg:top-[150px] lg:mb-0 lg:min-h-[750px] lg:pr-[40px] border-b-[#313131] border-b-[1px] lg:border-b-[0px]">
       <div className="overflow-hidden relative ml-[40px] md:ml-0 lg:ml-[20px] lg:mr-[70px] h-auto lg:h-[464px] aspect-five-four">
         <Link
-          href={`/Story/${Category.Category}/Headline/${Slug}/${color}`}
-          aria-label={`A post written by ${Author.Name} taggeed: ${Tag}`}
+          href={`/Story/${PostCategory.Category}/Headline/${Slug}/${color}`}
+          aria-label={`A post written by ${Author.Name} tagged: ${Tag}`}
         >
           <Image
             priority
@@ -53,10 +58,10 @@ const Headliner = async ({ StoryCategory }: { StoryCategory?: Category }) => {
         >
           <Link
             className="sm:group-hover:shadow-highlight-blurple"
-            aria-label={`A post written by ${author.Name} taggeed: ${Tag}`}
-            href={`/section/${category}/headline/${slug}/${color}`}
+            aria-label={`A post written by ${Author.Name} tagged: ${Tag}`}
+            href={`/Story/${PostCategory.Category}/Headline/${Slug}/${color}`}
           >
-            {title}
+            {ThumbTitle}
           </Link>
         </h2>
         <p className="font-sans text-[#efefef] mb-[6px] text-[20.25px] leading-[1.2] md:text-[24px] md:leading-[1.1] tracking-[-0.025em] ">
@@ -66,7 +71,7 @@ const Headliner = async ({ StoryCategory }: { StoryCategory?: Category }) => {
           name={Author.Name}
           reads={Reads}
           slug={Author.Slug}
-          date={getDateTimeZone(CreatedAt.toString())}
+          date={convertDate(CreatedAt)}
           className="pt-[10px]"
           ifReads={true}
         />

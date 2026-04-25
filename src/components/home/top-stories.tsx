@@ -1,14 +1,10 @@
 import React from "react";
 import StoryCard from "./story-card";
-import { TopStoryInterface } from "@/utils/interfaces";
-import {
-  getTopStories,
-  getTopStoriesForCategory,
-} from "@/lib/Home/get-top-stories";
-import { Category } from "@/utils/interfaces";
+import { TopStoryInterface, Category } from "@/utils/interfaces";
+import { getTopStories, getTopStoriesForCategory } from "@/lib/home";
 
 const TopStories = async ({ StoryCategory }: { StoryCategory?: Category }) => {
-  let topStories: TopStoryInterface[] = !StoryCategory
+  const topStories: TopStoryInterface[] = !StoryCategory
     ? await getTopStories()
     : await getTopStoriesForCategory(StoryCategory);
 
@@ -32,6 +28,7 @@ const TopStories = async ({ StoryCategory }: { StoryCategory?: Category }) => {
 
           return (
             <StoryCard
+              key={Slug}
               number={number}
               Author={Author}
               CreatedAt={CreatedAt}

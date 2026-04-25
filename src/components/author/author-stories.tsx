@@ -1,15 +1,14 @@
 import React, { Fragment, Suspense } from "react";
 import { AuthorStoriesInterface } from "@/utils/interfaces";
 import StoryCard from "./story-card";
-import { getAuthorStories } from "@/lib/author/get-author-stories";
+import { getAuthorStories } from "@/lib/author";
 
 const AuthorStories = async ({ author }: { author: string }) => {
-  const AuthorData = await getAuthorStories(author);
+  const stories = await getAuthorStories(author);
 
-  const AuthorStories: AuthorStoriesInterface = AuthorData.AuthorStories;
-
-  const main = AuthorStories.MainStory;
-  const side = AuthorStories.SideStory;
+  // Filter stories by format
+  const main = stories.filter((s: any) => s.format === "main");
+  const side = stories.filter((s: any) => s.format === "side");
 
   return (
     <Fragment>
